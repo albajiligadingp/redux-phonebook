@@ -19,6 +19,7 @@ router.post('/', function(req, res, next) {
 
 router.put('/:id', function(req, res, next) {
   Phonebook.findOneAndUpdate({id: Number(req.params.id)}, {name: req.body.name, phone: req.body.phone}, {new: true}, function(err, data) {
+    if (err) return console.log(err); 
     res.status(201).json({
       status: 'SUCCESS',
       data: data

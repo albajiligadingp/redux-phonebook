@@ -30,10 +30,10 @@ class ItemPhonebook extends Component {
 
     handleSave(event) {
         event.preventDefault();
-        const { id, name, phone } = this.state;
+        const { name, phone } = this.state;
         if (name && phone) {
-            this.props.putPhonebook(id, name, phone);
-            this.setState({ editButton: true });
+            this.props.putPhonebook(name, phone);
+            this.setState({ editButton: false });
         }
     }
 
@@ -145,7 +145,7 @@ class ItemPhonebook extends Component {
 const mapDispatchToProps = (dispatch, ownProps) => ({
     deletePhonebook: () => dispatch(deletePhonebook(ownProps.id)),
     resendPhonebook: () => dispatch(resendPhonebook(ownProps.id, ownProps.name, ownProps.phone)),
-    putPhonebook: () => dispatch(putPhonebook(ownProps.id, ownProps.name, ownProps.phone))
+    putPhonebook: (name, phone) => dispatch(putPhonebook(ownProps.id, name, phone))
 })
 
 export default connect(

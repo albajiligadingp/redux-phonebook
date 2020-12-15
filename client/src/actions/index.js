@@ -84,6 +84,7 @@ const putPhonebookRedux = (id, name, phone) => ({
 });
 
 export const putPhonebook = (id, name, phone) => {
+    console.log(id, name, phone);
     return dispatch => {
         dispatch(putPhonebookRedux(id, name, phone));
         return request
